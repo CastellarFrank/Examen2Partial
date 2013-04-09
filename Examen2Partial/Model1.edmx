@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TodoDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TodoDBModelStoreContainer">
+          <EntitySet Name="todos" EntityType="TodoDBModel.Store.todos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="usuarios" EntityType="TodoDBModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_todos_usuarios" Association="TodoDBModel.Store.FK_todos_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="todos" EntitySet="todos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="todos">
+          <Key>
+            <PropertyRef Name="idTodo" />
+          </Key>
+          <Property Name="idTodo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="fechaI" Type="date" Nullable="false" />
+          <Property Name="fechaF" Type="date" Nullable="false" />
+          <Property Name="status" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="userOwner" Type="varchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_todos_usuarios">
+          <End Role="usuarios" Type="TodoDBModel.Store.usuarios" Multiplicity="1" />
+          <End Role="todos" Type="TodoDBModel.Store.todos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="todos">
+              <PropertyRef Name="userOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TodoDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TodoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="todos" EntityType="TodoDBModel.todo" />
+          <EntitySet Name="usuarios" EntityType="TodoDBModel.usuario" />
+          <AssociationSet Name="FK_todos_usuarios" Association="TodoDBModel.FK_todos_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="todos" EntitySet="todos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="todo">
+          <Key>
+            <PropertyRef Name="idTodo" />
+          </Key>
+          <Property Name="idTodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="fechaI" Type="DateTime" Nullable="false" />
+          <Property Name="fechaF" Type="DateTime" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="userOwner" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="usuario" Relationship="TodoDBModel.FK_todos_usuarios" FromRole="todos" ToRole="usuarios" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="todos" Relationship="TodoDBModel.FK_todos_usuarios" FromRole="usuarios" ToRole="todos" />
+        </EntityType>
+        <Association Name="FK_todos_usuarios">
+          <End Role="usuarios" Type="TodoDBModel.usuario" Multiplicity="1" />
+          <End Role="todos" Type="TodoDBModel.todo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="todos">
+              <PropertyRef Name="userOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TodoDBModelStoreContainer" CdmEntityContainer="TodoDBEntities">
+          <EntitySetMapping Name="todos">
+            <EntityTypeMapping TypeName="TodoDBModel.todo">
+              <MappingFragment StoreEntitySet="todos">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idTodo" ColumnName="idTodo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaI" ColumnName="fechaI" />
+                <ScalarProperty Name="fechaF" ColumnName="fechaF" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="userOwner" ColumnName="userOwner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="TodoDBModel.usuario">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="TodoDBModel.todo" Width="1.5" PointX="4.5" PointY="1" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="TodoDBModel.usuario" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="TodoDBModel.FK_todos_usuarios" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.172841796875" />
+          <ConnectorPoint PointX="4.5" PointY="2.172841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

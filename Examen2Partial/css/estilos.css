@@ -1,0 +1,231 @@
+html{
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+body {
+	padding:0; 
+	background-color : #000000;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	height: 100%;
+}
+body#bodyMain{
+	background: url("../img/fondo-main.jpg") no-repeat;
+	width: 100%;
+	margin: 10px auto;
+}
+
+header,section#panePrincipal{
+	width: 80%;
+	border:2px solid black;
+	margin: 1em auto;
+	background: #FFFFFF;
+	opacity: 0.9;
+	filter:alpha(opacity=90);
+	vertical-align: middle;
+	
+}
+header{
+	border-radius: 1.5em 1.5em 0em 0em;
+}
+h1{
+	margin: 0.8em;
+	font-family: tahoma;
+	font-size: 2.5em;
+	color: #193E3E;
+}
+
+h1{
+	display: block;
+	text-align: center;
+}
+
+
+
+/*section#paneHeader{
+	border-left: 0.1em solid #57ABB8;
+	border-top: 0.1em solid #FFFFFF;
+	border-bottom: 0.1em solid #FFFFFF;
+	font-weight: bold;
+	background: #FFF;
+	color: #4D0000;
+	display: block;
+	font-family: Tahoma,Helvetica,Verdana;
+	font-size: 1em;
+	-ms-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-mo-transition: all 0.5s ease-in;
+	-webkit-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+}
+section#paneHeader:hover{
+	background: #212121;
+	border: 0.1em solid #006666;
+	border-radius:0 0.5em 0 0.5em;
+	color: #FFF;
+	-ms-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-mo-transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}*/
+#lblEmail,#btnLogout{
+	display: inline-block;
+	vertical-align: middle;
+}
+#btnLogout{
+	background: none;
+	border: none;
+	font-weight: bold;
+	color: #4D0000;
+}
+
+section#background{
+	background: url("../img/fondo-login.jpg");
+	width: 80%;
+	margin: 0 auto;
+	height: 100%;
+	border: 10px solid rgba(0,0,0,0.4);
+	border-top: none;
+	border-bottom: none;
+}
+
+
+#windowLogin,#windowRegister{
+	color: #000000;
+	vertical-align: middle;
+}
+
+
+nav ul{
+	list-style: none;
+	border-top: 0.1em solid #003D14;
+	border-bottom: 0.1em solid #003D14;
+}
+
+nav li{
+	display: inline-block;
+	padding: 0;
+	vertical-align: center;
+	width: 22%;
+}
+nav li#liLogout{
+	width: 32%;
+	height: 100%;
+}
+a{
+	text-decoration: none;
+	font-weight: bold;
+}
+nav a{
+	border-left: 0.1em solid #003D14;
+	border-top: 0.1em solid #FFFFFF;
+	border-bottom: 0.1em solid #FFFFFF;
+	color: #4D0000;
+	display: block;
+	font-family: Tahoma,Helvetica,Verdana;
+	font-size: 1em;
+	vertical-align: middle;
+	padding:0.5em 0;
+	-ms-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-mo-transition: all 0.5s ease-in;
+	-webkit-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+}
+
+nav a:hover{
+	background: #212121;
+	border: 0.1em solid #006666;
+	border-radius:0 0.5em 0 0.5em;
+	color: #FFF;
+	-ms-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-mo-transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+nav a#aLogout:hover{
+	background: #800000;
+	border: 0.1em solid #006666;
+	border-radius:0 0.5em 0 0.5em;
+	color: #FFF;
+	-ms-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-mo-transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+nav a#aFirst{
+	border-left: #FFFFFF;
+}
+#panelDerecho,#panelIzquierdo{
+	display: inline-block;
+	width: 30%;
+}
+#panelIzquierdo{
+	vertical-align: top;
+	margin-top: 2em;
+}
+#panelDerecho{
+	width: 69%;
+}
+#UpdatePanel1{
+	display: inline-block;
+	width: 69%
+}
+#panelLabel,#panelTextBox{
+	margin-top: 0;
+	display: inline-block;
+	text-align: right;
+	margin-right: 1px;
+	width: 49%;
+}
+#panelTextBox{
+	text-align: left;
+	margin-left: 1px;
+}
+#panelBoton{
+	margin-top: 40px;
+	text-align: center;
+}
+#btnAddTodo,#btnDelete{
+	display: inline-block;
+	margin: 20px auto;
+}
+#lblAddTitle,#lblSelectTitle,#lblTitleStart{
+	font-weight: bold;
+	font-size: 1.5em;
+	color: #006666;
+}
+
+#panelTitle,#panelTitleIzquierd{
+	margin-top: 20px;
+}
+#panelTitleIzquierd{
+	margin-bottom: 15px;
+}
+#panelTitle,#panelBoton{
+	margin-left: 30px;
+}
+#panelLabels,#panelFilter,#panelResult{
+	display: block;
+	text-align: center;
+}
+#panelResult{
+	margin-bottom: 50px;
+}
+#panelLabels{
+	margin: 20px;
+}
+#btnRefresh{
+	margin: 0 auto;
+}
+#panelbotonunic{
+	display: block;
+	margin-top: 20px;
+}
+#panelPrincipal{
+}
